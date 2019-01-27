@@ -10,13 +10,16 @@ class UntitledTestCase(unittest.TestCase):
     
     def test_untitled_test_case(self):
         wd = self.wd
+        #Login
         wd.get("http://localhost/addressbook/delete.php?part=1;")
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys("admin")
         wd.find_element_by_name("pass").clear()
         wd.find_element_by_name("pass").send_keys("secret")
         wd.find_element_by_xpath("//input[@value='Login']").click()
+        #open add new page
         wd.find_element_by_link_text("add new").click()
+        #create a new contact
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys("Kseniya")
@@ -52,7 +55,9 @@ class UntitledTestCase(unittest.TestCase):
         wd.find_element_by_name("notes").click()
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys("testwww")
+        #enter a new contact
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+        #logout
         wd.find_element_by_link_text("Logout").click()
     
     def tearDown(self):
