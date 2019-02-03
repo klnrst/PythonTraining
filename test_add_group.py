@@ -33,11 +33,15 @@ class UntitledTestCase(unittest.TestCase):
         wd.find_element_by_link_text("group page").click()
 
     def group_creation(self, wd, group):
-        # initial group creation
-        wd.find_element_by_name("new").click()
+        self.init_group_creation(wd)
         self.fill_out_group_form(group, wd)
-        # Submit group creation
+        self.submit_group(wd)
+
+    def submit_group(self, wd):
         wd.find_element_by_name("submit").click()
+
+    def init_group_creation(self, wd):
+        wd.find_element_by_name("new").click()
 
     def fill_out_group_form(self, group, wd):
         wd.find_element_by_name("group_name").click()
